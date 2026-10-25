@@ -52,6 +52,24 @@ describe('TautulliApiService', () => {
 
     beforeEach(() => {
       settings.tautulli_url = 'http://tautulli.local';
+      settings.tautulli_external_url = null;
+    });
+
+    // API calls keep the internal URL; only the link handed to the browser
+    // switches to the external one.
+    it('links to the external URL when one is set', async () => {
+      settings.tautulli_external_url = 'https://tautulli.example.com';
+      answer({
+        get_item_user_stats: [
+          { friendly_name: 'alice', total_plays: 1, total_time: 60 },
+        ],
+        get_metadata: { media_type: 'movie', rating_key: '7' },
+        get_history: { data: [] },
+      });
+
+      await expect(service.getItemStats('7')).resolves.toMatchObject({
+        url: 'https://tautulli.example.com/info?rating_key=7&source=history',
+      });
     });
 
     it('totals the per-user stats and dates them from the newest show play', async () => {

@@ -16,6 +16,7 @@ import ExternalServiceSettingsPage, {
 const TautulliSettingDeleteSchema = z.object({
   url: z.literal(''),
   api_key: z.literal(''),
+  external_url: z.literal(''),
 })
 
 const TautulliSettingFormSchema = z.union([
@@ -51,6 +52,19 @@ const buildFields = (): ExternalServiceFieldConfig[] => [
         <Trans>Find it here: Settings → Web Interface</Trans>
       </ServiceApiKeyHelp>
     ),
+  },
+  {
+    name: 'external_url',
+    fullWidth: true,
+    label: globalT`External URL`,
+    placeholder: 'https://tautulli.example.com',
+    helpText: (
+      <Trans>
+        <strong>Optional</strong> address your browser uses for links to
+        Tautulli. Leave empty to use the URL above.
+      </Trans>
+    ),
+    normalize: stripTrailingSlashes,
   },
 ]
 

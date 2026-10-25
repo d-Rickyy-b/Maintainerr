@@ -59,6 +59,7 @@ export const settingsUpdateSchema = z.object({
 
   tautulli_url: serviceUrlSchema.optional(),
   tautulli_api_key: z.string().trim().optional(),
+  tautulli_external_url: serviceUrlSchema.or(z.literal('')).optional(),
 
   streamystats_url: serviceUrlSchema.optional(),
 

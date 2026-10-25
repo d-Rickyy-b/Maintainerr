@@ -467,7 +467,12 @@ const MediaModalContent: React.FC<ModalContentProps> = memo(
       GetApiHandler('/settings')
         .then((resp) => {
           if (!active) return
-          setTautulliModalUrl(resp?.tautulli_url || null)
+          // Only links use the external URL; the server talks to tautulli_url.
+          setTautulliModalUrl(
+            resp?.tautulli_url
+              ? resp.tautulli_external_url || resp.tautulli_url
+              : null,
+          )
           setRequestServices({
             seerr: !!resp?.seerr_url,
             ombi: !!resp?.ombi_url,

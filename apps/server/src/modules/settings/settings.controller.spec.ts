@@ -89,10 +89,12 @@ describe('SettingsController', () => {
         entityOverrides: {
           tautulli_url: 'http://tautulli.local',
           tautulli_api_key: 'tautulli-key',
+          tautulli_external_url: 'https://tautulli.example.com',
         },
         expected: {
           api_key: 'tautulli-key',
           url: 'http://tautulli.local',
+          external_url: 'https://tautulli.example.com',
         },
       },
       {

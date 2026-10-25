@@ -275,6 +275,7 @@ export class SettingsOperationsService {
         ...settingsDb,
         tautulli_url: null,
         tautulli_api_key: null,
+        tautulli_external_url: null,
       });
 
       await this.settingsDataService.init();
@@ -298,6 +299,7 @@ export class SettingsOperationsService {
         ...settingsDb,
         tautulli_url: settings.url,
         tautulli_api_key: settings.api_key,
+        tautulli_external_url: settings.external_url || null,
       });
 
       await this.settingsDataService.init();

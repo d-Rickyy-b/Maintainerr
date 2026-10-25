@@ -649,36 +649,57 @@ describe('MediaModal', () => {
     )
   })
 
-  it('links each watch statistics panel to its service with no plays to show', async () => {
-    useMediaServerTypeMock.mockReturnValue({
-      ...useMediaServerTypeMock(),
-      isPlex: true,
-    })
-    getApiHandlerMock.mockImplementation((path: string) =>
-      Promise.resolve(
-        path === '/settings'
-          ? { tautulli_url: 'http://tautulli.local', tracearr_url: 'http://t' }
-          : path.includes('/items/')
-            ? null
-            : {},
-      ),
-    )
+  // The external URL is only for links: a browser often cannot reach the
+  // address Maintainerr itself uses, e.g. a Docker hostname.
+  it.each([
+    ['the URL', {}, 'http://tautulli.local'],
+    [
+      'the external URL when set',
+      { tautulli_external_url: 'https://tautulli.example.com' },
+      'https://tautulli.example.com',
+    ],
+  ])(
+    'links each watch statistics panel to its service with no plays to show, using %s',
+    async (_, tautulliSettings, tautulliBase) => {
+      useMediaServerTypeMock.mockReturnValue({
+        ...useMediaServerTypeMock(),
+        isPlex: true,
+      })
+      getApiHandlerMock.mockImplementation((path: string) =>
+        Promise.resolve(
+          path === '/settings'
+            ? {
+                tautulli_url: 'http://tautulli.local',
+                tracearr_url: 'http://t',
+                ...tautulliSettings,
+              }
+            : path.includes('/items/')
+              ? null
+              : {},
+        ),
+      )
 
-    render(
-      <MediaModal onClose={() => {}} id={93} mediaType="movie" title="Movie" />,
-    )
+      render(
+        <MediaModal
+          onClose={() => {}}
+          id={93}
+          mediaType="movie"
+          title="Movie"
+        />,
+      )
 
-    expect(
-      (
-        await screen.findByRole('link', { name: /Open on Tautulli/ })
-      ).getAttribute('href'),
-    ).toBe('http://tautulli.local/info?rating_key=93&source=history')
-    expect(
-      screen
-        .getByRole('link', { name: /Open on Tracearr/ })
-        .getAttribute('href'),
-    ).toBe('http://t')
-  })
+      expect(
+        (
+          await screen.findByRole('link', { name: /Open on Tautulli/ })
+        ).getAttribute('href'),
+      ).toBe(`${tautulliBase}/info?rating_key=93&source=history`)
+      expect(
+        screen
+          .getByRole('link', { name: /Open on Tracearr/ })
+          .getAttribute('href'),
+      ).toBe('http://t')
+    },
+  )
 
   it('names the season and falls back to the provider description when the media server has none', async () => {
     getApiHandlerMock.mockImplementation((path: string) => {

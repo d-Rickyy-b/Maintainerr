@@ -327,6 +327,10 @@ msgstr "+ Variabele"
 msgid "+{hiddenCount} more..."
 msgstr "+{hiddenCount} meer..."
 
+#: src/components/Settings/Tautulli/index.tsx
+msgid "<0>Optional</0> address your browser uses for links to Tautulli. Leave empty to use the URL above."
+msgstr ""
+
 #: src/components/Forms/ServiceBasePathInput.tsx
 msgid "<0>Optional</0> path configured on the service."
 msgstr "<0>Optioneel</0> pad geconfigureerd op de dienst."
@@ -1555,6 +1559,10 @@ msgstr "Exporteer uw regels naar een YAML document"
 #: src/components/Rules/Rule/RuleCreator/CommunityRuleUpload/index.tsx
 msgid "Extended Description *"
 msgstr "Uitgebreide beschrijving *"
+
+#: src/components/Settings/Tautulli/index.tsx
+msgid "External URL"
+msgstr ""
 
 #: src/components/StorageMetrics/index.tsx
 msgid "Failed to compute library sizes. Check that Maintainerr can reach your media server."

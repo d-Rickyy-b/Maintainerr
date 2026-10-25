@@ -292,6 +292,7 @@ export class SettingsController {
     return {
       api_key: settings.tautulli_api_key,
       url: settings.tautulli_url,
+      external_url: settings.tautulli_external_url ?? '',
     };
   }
 

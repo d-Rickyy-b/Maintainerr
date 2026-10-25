@@ -330,7 +330,7 @@ export class TautulliApiService {
       }));
 
       return {
-        url: `${this.settings.tautulli_url}/info?rating_key=${ratingKey}&source=history`,
+        url: `${this.settings.tautulli_external_url || this.settings.tautulli_url}/info?rating_key=${ratingKey}&source=history`,
         plays: users.reduce((total, user) => total + user.plays, 0),
         watchTime: users.reduce((total, user) => total + user.watchTime, 0),
         lastWatched: await this.getLastPlayedAt(ratingKey),

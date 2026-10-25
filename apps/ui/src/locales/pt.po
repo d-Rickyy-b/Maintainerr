@@ -327,6 +327,10 @@ msgstr ""
 msgid "+{hiddenCount} more..."
 msgstr ""
 
+#: src/components/Settings/Tautulli/index.tsx
+msgid "<0>Optional</0> address your browser uses for links to Tautulli. Leave empty to use the URL above."
+msgstr ""
+
 #: src/components/Forms/ServiceBasePathInput.tsx
 msgid "<0>Optional</0> path configured on the service."
 msgstr ""
@@ -1554,6 +1558,10 @@ msgstr ""
 
 #: src/components/Rules/Rule/RuleCreator/CommunityRuleUpload/index.tsx
 msgid "Extended Description *"
+msgstr ""
+
+#: src/components/Settings/Tautulli/index.tsx
+msgid "External URL"
 msgstr ""
 
 #: src/components/StorageMetrics/index.tsx

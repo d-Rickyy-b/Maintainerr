@@ -412,6 +412,7 @@ export class MediaServerSwitchService {
       updatedSettings.plex_auth_token = null;
       updatedSettings.tautulli_url = null;
       updatedSettings.tautulli_api_key = null;
+      updatedSettings.tautulli_external_url = null;
     } else if (currentServerType === MediaServerType.JELLYFIN) {
       updatedSettings.jellyfin_url = null;
       updatedSettings.jellyfin_api_key = null;

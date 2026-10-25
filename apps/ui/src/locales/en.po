@@ -327,6 +327,10 @@ msgstr "+ Variable"
 msgid "+{hiddenCount} more..."
 msgstr "+{hiddenCount} more..."
 
+#: src/components/Settings/Tautulli/index.tsx
+msgid "<0>Optional</0> address your browser uses for links to Tautulli. Leave empty to use the URL above."
+msgstr "<0>Optional</0> address your browser uses for links to Tautulli. Leave empty to use the URL above."
+
 #: src/components/Forms/ServiceBasePathInput.tsx
 msgid "<0>Optional</0> path configured on the service."
 msgstr "<0>Optional</0> path configured on the service."
@@ -1555,6 +1559,10 @@ msgstr "Export your rules to a YAML document"
 #: src/components/Rules/Rule/RuleCreator/CommunityRuleUpload/index.tsx
 msgid "Extended Description *"
 msgstr "Extended Description *"
+
+#: src/components/Settings/Tautulli/index.tsx
+msgid "External URL"
+msgstr "External URL"
 
 #: src/components/StorageMetrics/index.tsx
 msgid "Failed to compute library sizes. Check that Maintainerr can reach your media server."

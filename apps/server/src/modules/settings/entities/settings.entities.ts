@@ -114,6 +114,10 @@ export class Settings implements SettingDto {
   @Column({ nullable: true })
   tautulli_api_key: string;
 
+  // Browser-facing address for links; API calls always use tautulli_url.
+  @Column({ nullable: true })
+  tautulli_external_url: string;
+
   @Column({ nullable: true })
   streamystats_url: string;
 

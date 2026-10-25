@@ -101,6 +101,31 @@ describe('SettingsOperationsService', () => {
     internalApi.init.mockImplementation();
   });
 
+  // An emptied external URL must clear the stored one, so links fall back to
+  // the URL Maintainerr connects with.
+  it.each([
+    ['https://tautulli.example.com', 'https://tautulli.example.com'],
+    ['', null],
+  ])(
+    'saves the Tautulli external URL %p as %p',
+    async (externalUrl, stored) => {
+      await expect(
+        service.updateTautulliSetting({
+          url: 'http://tautulli:8181',
+          api_key: 'tautulli-key',
+          external_url: externalUrl,
+        }),
+      ).resolves.toMatchObject({ code: 1 });
+
+      expect(settingsDataService.saveSettings).toHaveBeenCalledWith(
+        expect.objectContaining({
+          tautulli_url: 'http://tautulli:8181',
+          tautulli_external_url: stored,
+        }),
+      );
+    },
+  );
+
   it('saves Tracearr settings and reinitializes the client', async () => {
     const setting: TracearrSetting = {
       url: 'http://tracearr.local',

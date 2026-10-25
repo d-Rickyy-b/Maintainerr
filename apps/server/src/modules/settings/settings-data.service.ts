@@ -105,6 +105,8 @@ export class SettingsDataService implements SettingDto {
 
   tautulli_api_key: string;
 
+  tautulli_external_url: string;
+
   streamystats_url: string;
 
   tracearr_url: string;
@@ -184,6 +186,7 @@ export class SettingsDataService implements SettingDto {
         MetadataProviderPreference.TMDB_PRIMARY;
       this.tautulli_url = settingsDb?.tautulli_url;
       this.tautulli_api_key = settingsDb?.tautulli_api_key;
+      this.tautulli_external_url = settingsDb?.tautulli_external_url;
       this.streamystats_url = settingsDb?.streamystats_url;
       this.tracearr_url = settingsDb?.tracearr_url;
       this.tracearr_api_key = settingsDb?.tracearr_api_key;

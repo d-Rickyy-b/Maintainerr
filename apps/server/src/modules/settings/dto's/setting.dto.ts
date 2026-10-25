@@ -63,6 +63,8 @@ export class SettingDto {
 
   tautulli_api_key: string;
 
+  tautulli_external_url?: string;
+
   streamystats_url: string;
 
   tracearr_url: string;

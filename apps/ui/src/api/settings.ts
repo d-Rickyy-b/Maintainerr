@@ -77,6 +77,7 @@ export interface ISettings {
   ombi_api_key?: string
   tautulli_url: string
   tautulli_api_key: string
+  tautulli_external_url?: string
   streamystats_url?: string
   tracearr_url?: string
   tracearr_api_key?: string
